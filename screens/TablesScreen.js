@@ -15,21 +15,38 @@ export default function TablesScreen() {
   }, []);
 
   //JSX
-  const tableButton = t => {
+  const tableButton = (t) => {
     return (
-      <Button mode="contained" icon="table-chair" contentStyle={{flexDirection:'row-reverse'}} style={{width: 100, margin: 4 }} key={t}
-        onPress={() => navigation.navigate("Menu", { table:t })}>
-        {t} 
+      <Button
+        textColor="black"
+        buttonColor="#e6a756"
+        mode="contained"
+        icon="table-chair"
+        contentStyle={{ flexDirection: "row-reverse" }}
+        style={{ width: 100, margin: 4 }}
+        key={t}
+        onPress={() => navigation.navigate("Menu", { table: t })}
+      >
+        {t}
       </Button>
     );
   };
 
   return (
-    <View>
+    <View style={{ backgroundColor: "#f6e1c5" }}>
       <View style={styles.container}>
-        <Text variant="headlineSmall">Select the table</Text>
+        <Text variant="headlineSmall" style={{ color: "black" }}>
+          Select the table
+        </Text>
       </View>
-      <View style={{ margin: 1,  justifyContent: "center" }}>
+      <View
+        style={{
+          margin: 1,
+          justifyContent: "center",
+          flexDirection: "row",
+          flexWrap: "wrap",
+        }}
+      >
         {tables.map(tableButton)}
       </View>
     </View>

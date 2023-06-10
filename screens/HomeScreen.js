@@ -8,15 +8,20 @@ export default function HomeScreen() {
   const navigation = useNavigation();
 
   return (
-    <View style={{}}>
+    <View style={{ backgroundColor: "#f6e1c5" }}>
       <StatusBar style="auto" />
       <View style={styles.container}>
-        <Text style={{ marginBottom: 100, fontSize: 20 }}>
+        <Text
+          style={{ marginBottom: 100, fontSize: 20 }}
+          theme={{ colors: { primary: "#212529" } }}
+        >
           This is the Bean Scene Ordering App!
         </Text>
         <Button
           mode="contained"
           onPress={() => navigation.navigate("Tables")}
+          theme={{ colors: { primary: "#e6a756" } }}
+          textColor="black"
         >
           Start Order
         </Button>
@@ -28,8 +33,9 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     //flex: 1,
-    //backgroundColor: "#fff",
+    //backgroundColor: "#212529",
     //width: 400,
+    color: "#212529",
     margin: 20,
     padding: 10,
     alignItems: "center",
