@@ -1,5 +1,6 @@
-//const baseApi = "http://10.0.2.2:5208";
-const baseApi = "https://localhost:7060";
+// const baseApi = "http://10.0.2.2:5208";
+const baseApi = "https://localhost:7168";
+// const baseApi = "http://172.20.10.7:7168";
 export async function fetchProducts() {
   try {
     const response = await fetch(`${baseApi}/api/Product`);
@@ -13,7 +14,7 @@ export async function fetchProducts() {
 
 export async function getRestaurantTables() {
   try {
-    const response = await fetch(`${baseApi}/api/order/tables`);
+    const response = await fetch(`${baseApi}/api/table/tables`);
 
     const data = await response.json();
     return data;
@@ -32,4 +33,60 @@ export async function getBreakfast(sitting) {
     console.log("ERROR", error);
     throw error;
   }
+}
+
+export async function getProductById(id) {
+  try {
+    const response = await fetch(`${baseApi}/api/Product/${id}`);
+
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log("ERROR", error);
+    throw error;
+  }
+}
+
+export async function postOrder(table, currentSelection, totalPrice) {
+  // variables
+
+  let qty, name, price, size, vegan;
+  //functions
+  const now = new Date();
+  const date =
+    now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDay();
+  const time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+
+  // Structuring the DB model
+
+  let order = {
+    table: table,
+    items: [],
+    totalPrice: totalPrice,
+    timestamp: `${date} ${time}`,
+  };
+  //Loop through all items and adding them to items array
+  // deconstructing currentSelection
+
+  for (let i = 0; i < currentSelection.length; i++) {
+    const element = currentSelection[i];
+    const { name, prices, vegan, sizes } = element.item;
+    element.qty;
+    const { qty } = element.qty;
+    order.items.push({
+      name,
+      price: prices,
+      quantity: element.qty,
+      vegan,
+      size: sizes,
+    });
+  }
+
+  // API code
+  const response = await fetch(`${baseApi}/api/Order`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(order),
+  });
 }
