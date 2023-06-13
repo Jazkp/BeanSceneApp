@@ -74,7 +74,7 @@ export default function MenuScreen() {
   // functions
 
   return (
-    <View style={{ backgroundColor: "#f6e1c5" }}>
+    <View style={{ backgroundColor: "#f6e1c5", flex: 1 }}>
       <View>
         <Text variant="titleMedium" style={{ color: "black" }}>
           ORDER - TABLE: {table}
@@ -134,7 +134,12 @@ export default function MenuScreen() {
           >
             <View>
               <Text
-                style={{ marginBottom: 10, textAlign: "center", fontSize: 25 }}
+                style={{
+                  marginBottom: 10,
+                  textAlign: "center",
+                  fontSize: 25,
+                  color: "white",
+                }}
               >{`${modalData.name} - $${modalData.prices}`}</Text>
               <View
                 style={{

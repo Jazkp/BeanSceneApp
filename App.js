@@ -9,6 +9,7 @@ import {
   MenuScreen,
   ConfirmationScreen,
 } from "./screens";
+import AppContainer from "./components/AppContainer";
 
 export default function App() {
   const Stack = createNativeStackNavigator();

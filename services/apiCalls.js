@@ -1,6 +1,7 @@
-// const baseApi = "http://10.0.2.2:5208";
-const baseApi = "https://localhost:7168";
-// const baseApi = "http://172.20.10.7:7168";
+import { Platform } from "react-native";
+
+const baseApi = getServerAddress();
+
 export async function fetchProducts() {
   try {
     const response = await fetch(`${baseApi}/api/Product`);
@@ -89,4 +90,14 @@ export async function postOrder(table, currentSelection, totalPrice) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(order),
   });
+}
+
+function getServerAddress() {
+  if (Platform.OS === "android") {
+    return "http://10.0.2.2:5057";
+  } else if (Platform.OS === "web") {
+    return "https://localhost:7168";
+  } else {
+    throw new Error("Unsupported platform!");
+  }
 }

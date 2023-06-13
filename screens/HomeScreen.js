@@ -3,12 +3,15 @@ import { useNavigation } from "@react-navigation/native";
 import { StyleSheet, Text, View } from "react-native";
 import { PaperProvider } from "react-native-paper";
 import { Button } from "react-native-paper";
+import * as ScreenOrientation from "expo-screen-orientation";
 
 export default function HomeScreen() {
   const navigation = useNavigation();
 
+  ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+
   return (
-    <View style={{ backgroundColor: "#f6e1c5" }}>
+    <View style={{ backgroundColor: "#f6e1c5", flex: 1 }}>
       <StatusBar style="auto" />
       <View style={styles.container}>
         <Text

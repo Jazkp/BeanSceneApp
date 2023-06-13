@@ -33,7 +33,7 @@ export default function TablesScreen() {
   };
 
   return (
-    <View style={{ backgroundColor: "#f6e1c5" }}>
+    <View style={{ backgroundColor: "#f6e1c5", flex: 1 }}>
       <View style={styles.container}>
         <Text variant="headlineSmall" style={{ color: "black" }}>
           Select the table
