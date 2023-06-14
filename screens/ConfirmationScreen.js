@@ -25,21 +25,23 @@ export default function ConfirmationScreen() {
 
   function displayText() {
     currentSelection.forEach((p) => {
-      text += `${p.item.name} - Qty:${p.qty} \n`;
+      text += `${p.item.name} x ${p.qty} - $${p.item.prices * p.qty} \n`;
     });
   }
 
   function totalPrice() {
     currentSelection.forEach((element) => {
       if (element.qty > 1) {
-        priceTotalOne = element.item.prices * element.qty;
+        priceTotalOne = priceTotalOne + element.item.prices * element.qty;
       } else {
         priceTotalTwo = Number(priceTotalTwo) + Number(element.item.prices);
       }
     });
-
     return (finalPrice = Number(priceTotalOne) + Number(priceTotalTwo));
   }
+
+  totalPrice();
+
   return (
     <View style={{ backgroundColor: "#f6e1c5", flex: 1, padding: 40 }}>
       <View>
@@ -51,13 +53,15 @@ export default function ConfirmationScreen() {
           {"\n"}
           {displayText()}
           {text}
+          {"\n"}
+          Total: ${finalPrice}
         </Text>
       </View>
       <Button
         textColor="black"
         buttonColor="#e6a756"
         onPress={() => {
-          totalPrice(), postOrder(table, currentSelection, finalPrice);
+          postOrder(table, currentSelection, finalPrice);
           navigation.navigate("Home");
         }}
         mode="contained"

@@ -15,10 +15,11 @@ export default function HomeScreen() {
       <StatusBar style="auto" />
       <View style={styles.container}>
         <Text
-          style={{ marginBottom: 100, fontSize: 20 }}
+          style={{ marginBottom: 100, fontSize: 20, textAlign: "center" }}
           theme={{ colors: { primary: "#212529" } }}
         >
-          This is the Bean Scene Ordering App!
+          Bean Scene Ordering App {"\n"}
+          Server: Jessica
         </Text>
         <Button
           mode="contained"
