@@ -74,7 +74,7 @@ export default function MenuScreen() {
   // functions
 
   return (
-    <View style={{ backgroundColor: "#f6e1c5", flex: 1 }}>
+    <View style={{ backgroundColor: "#f6e1c5", flex: 1, padding: 20 }}>
       <View>
         <Text variant="titleMedium" style={{ color: "black" }}>
           ORDER - TABLE: {table}
