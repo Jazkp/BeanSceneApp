@@ -41,14 +41,14 @@ export default function ConfirmationScreen() {
     return (finalPrice = Number(priceTotalOne) + Number(priceTotalTwo));
   }
   return (
-    <View style={{ backgroundColor: "#f6e1c5", flex: 1 }}>
+    <View style={{ backgroundColor: "#f6e1c5", flex: 1, padding: 40 }}>
       <View>
         <Text variant="titleMedium" style={{ color: "black" }}>
-          The order has been confirmed for table {table} <br />
+          The order has been confirmed for table {table} {"\n"}
         </Text>
         <Text variant="titleMedium" style={{ color: "black" }}>
           Items selected:
-          <br />
+          {"\n"}
           {displayText()}
           {text}
         </Text>
