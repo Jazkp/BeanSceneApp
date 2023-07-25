@@ -19,7 +19,6 @@ export default function HomeScreen() {
           theme={{ colors: { primary: "#212529" } }}
         >
           Bean Scene Ordering App {"\n"}
-          Server: Jessica
         </Text>
         <Button
           mode="contained"
